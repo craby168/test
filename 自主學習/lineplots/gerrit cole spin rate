@@ -1,0 +1,30 @@
+from matplotlib import pyplot as plt
+import pandas as pd
+import numpy as np
+#data
+k_crv=[2477,2626,2667,2842,2901,2803,2800,2799,2783]
+sld=[1925,2285,2417,2517,2622,2582,2600,2569,2542]
+ffs=[2155,2185,2164,2369,2530,2505,2452,2428,2412]
+cut=[None,None,None,None,None,None,None,2485,2511]
+chu=[1708,1696,1631,1667,1870,1750,1719,1616,1581]
+x=np.arange(2015,2024)
+#plot
+fig=plt.figure(figsize=(8,5))
+plt.plot(x,k_crv,label="K-Curve", marker='o')
+plt.plot(x,sld,label="Slider", marker='o')
+plt.plot(x,ffs,label="4-Seam Fastball", marker='o')
+plt.plot(x,cut,label="Cutter", marker='o')
+plt.plot(x,chu,label="Changeup", marker='o')
+#text
+plt.gcf().text(0.45,0.89,'source:baseballsavant.com', fontsize=8)
+plt.axvline(x=2021, color='red', linestyle='-', lw=3)
+plt.annotate('strict enforcement', xy=(2021, 2000), xytext=(2022, 2100),
+            arrowprops=dict(facecolor='blue', shrink=0.05), fontsize=9)
+##
+plt.title('Gerrit Cole average spin rate per season',pad=25)
+plt.tight_layout()
+plt.xlabel('season', labelpad=1)
+plt.ylabel('spin rate(RPM)', labelpad=1)
+plt.legend(edgecolor=None, loc="upper left")
+plt.savefig('Gerrit Cole average spin rate per season.jpg')
+plt.show()
